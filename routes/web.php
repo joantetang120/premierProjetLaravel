@@ -1,17 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiteController;
 
-Route::get('/', action: function () {
-    return view('welcome');
-});
+Route::get('/', action: [SiteController::class, 'welcome']);
 
-Route::get('/bonjour', function() {
-    return "<h1>Bonjour</h1>";
-});
 
-Route::get('/home', function () {
- return view('home');
-});
+
+Route::get('/home/{nom}', [SiteController::class, 'home']);
 
 
