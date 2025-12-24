@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', action: function () {
@@ -15,3 +16,15 @@ Route::get('/home', function () {
 });
 
 
+
+Route::view('/about', 'about');
+Route::view('/contact', 'contact');
+Route::view('/service', 'service');
+
+Route::get('home2/{nom}/{id}' ,[UserController::class, 'home2']);
+
+Route::get('pagetest/{email}/{password}', [UserController::class,'pagetest']);
+
+Route::fallback(function(){
+    return"this page is not found try agains";
+});
