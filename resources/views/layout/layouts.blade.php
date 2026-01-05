@@ -1,27 +1,28 @@
 @extends('layout.app')
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-
         /* *{
               border:  1px solid black
         } */
-        body{
+        body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0px;
             padding: 0px;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-          
-            
+
+
         }
-        nav ul{
+
+        nav ul {
             list-style-type: none;
             padding: 15px;
             margin-top: 0px;
@@ -29,35 +30,40 @@
             overflow: hidden;
             display: flex;
             justify-content: center;
-            
+
 
         }
 
-        nav ul li{
+        nav ul li {
             padding: 14px 20px;
-            
+
         }
-        nav ul li a{
+
+        nav ul li a {
             color: white;
             text-decoration: none;
-          }
-        .container{
+        }
+
+        .container {
             display: flex;
             flex: 1;
         }
-        .sidebar{
+
+        .sidebar {
             width: 250px;
             background: #f4f4f4;
             padding: 15px;
             position: relative;
             top: 0px;
-          
+
         }
-        .main-content{
+
+        .main-content {
             flex: 1;
             padding: 20px;
         }
-        footer{
+
+        footer {
             background: #4376e6;
             color: white;
             text-align: center;
@@ -65,18 +71,19 @@
             position: relative;
             bottom: 0px;
             /* width: 100%; */
-           
-            
+
+
         }
     </style>
-    @yield("styles")
+    @yield('styles')
 </head>
+
 <body>
     <nav>
         <ul>
             <li><a href="">Home</a></li>
-            <li><a href="../about">About</a></li>
-            <li><a href="../service">Service</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="{{ route('articles.index') }}">Articles</a></li>
             <li><a href="../contact">Contact</a></li>
         </ul>
     </nav>
@@ -106,5 +113,6 @@
     </footer>
 
 </body>
-    @yield('scripts')
+@yield('scripts')
+
 </html>
