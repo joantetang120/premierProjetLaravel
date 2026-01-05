@@ -1513,20 +1513,5 @@
     @endif
 </head>
 
-<body>
-    <header class="w-full bg-blue-400">
-        <h1>LOGO</h1>
-    </header>
-    <main>
-        @yield('content')
-    </main>
 
 
-    <script>
-        const
-        var = 'hello'
-        @yield('scripts')
-    </script>
-</body>
-
-</html>
