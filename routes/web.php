@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', action: [SiteController::class, 'welcome']);
 
@@ -28,3 +29,7 @@ Route::fallback(function(){
 // Routes pour les articles
 // 1. Recup des articles
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+
+//recuperation des etudiants
+
+Route::get('/students', [StudentController::class, 'index'])->name('students.index');
