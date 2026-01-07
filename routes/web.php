@@ -31,6 +31,7 @@ Route::fallback(function(){
 // Routes pour les articles
 // 1. Recup des articles
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('article_create', [ArticleController::class, 'create'])->name('articles.create');
 
 
 // Routes pour les produits

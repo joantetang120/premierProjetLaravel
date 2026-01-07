@@ -5,7 +5,7 @@
 @section('content')
     <h1>Articles du blog</h1>
 
-    <a href="">Nouvel article</a>
+    <a href=""> + Nouvel article</a>
 
     @if ($articles->isEmpty())
         <p>Aucun article pour le moment !</p>
