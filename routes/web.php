@@ -35,7 +35,7 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ind
 
 // Routes pour les produits
 // 2. Recup des produits
-Route::get('/Produits', [ProduitController::class, 'index'])->name('Produits.index');
+Route::get('/produits', [ProduitController::class, 'index'])->name('Produits.index');
 
 
 // Affiche le formulaire
