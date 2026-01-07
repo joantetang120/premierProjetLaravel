@@ -18,7 +18,7 @@
                     <th>Nom</th>
                     <th>Email</th>
                     <th>Date de creations</th>
-                    <th>Actions</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
