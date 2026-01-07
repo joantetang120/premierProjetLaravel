@@ -1513,6 +1513,7 @@
     @endif
 </head>
 
+<<<<<<< HEAD
 <body>
     <main>
         @yield('content')
@@ -1520,3 +1521,5 @@
 </body>
 
 </html>
+=======
+>>>>>>> bf6d92e332fb77e306e82c7861d9ce3a1427b48f
