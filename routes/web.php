@@ -32,6 +32,8 @@ Route::fallback(function(){
 // 1. Recup des articles
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 
+Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+
 
 // Routes pour les produits
 // 2. Recup des produits
