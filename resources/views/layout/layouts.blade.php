@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,11 +24,102 @@
             <li><a href="{{ route('articles.index') }}">Articles</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="{{ route('Produits.index') }}">Produits</a></li>
+=======
+@extends('layout.app')
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* *{
+              border:  1px solid black
+        } */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+
+
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 15px;
+            margin-top: 0px;
+            background: #005bb5;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+
+
+        }
+
+        nav ul li {
+            padding: 14px 20px;
+
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #f4f4f4;
+            padding: 15px;
+            position: relative;
+            top: 0px;
+
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        footer {
+            background: #4376e6;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0px;
+            /* width: 100%; */
+
+
+        }
+    </style>
+    @yield('styles')
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="{{ route('articles.index') }}">Articles</a></li>
+            <li><a href="{{ route('students.index') }}">students</a></li>
+            <li><a href="../contact">Contact</a></li>
+>>>>>>> bf6d92e332fb77e306e82c7861d9ce3a1427b48f
         </ul>
     </nav>
 
     <div class="container">
         <aside class="sidebar">
+<<<<<<< HEAD
             <h2>Menu</h2>
             <ul>
                 <li><a href="#">Lien 1</a></li>
@@ -41,13 +133,39 @@
     </div>
 @endif
             @yield('content') {{-- C'est ici que le contenu des autres pages s'injectera --}}
+=======
+            <h2>Sidebar</h2>
+            <ul>
+                <li><a href="">Link1</a></li>
+                <li><a href="">Link2</a></li>
+                <li><a href="">Link3</a></li>
+                <li><a href="">Link4</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            {{-- <section>
+                <h2>About Us</h2>
+                <p>this is a simple html and css template to start your project</p>
+            </section> --}}
+
+            @yield('content')
+>>>>>>> bf6d92e332fb77e306e82c7861d9ce3a1427b48f
         </main>
     </div>
 
     <footer>
+<<<<<<< HEAD
         <p>&copy; 2025 My website. Tous droits réservés.</p>
     </footer>
 
     @yield('scripts')
 </body>
+=======
+        <p>&copy; 2025 My website. all rigth reserved.</p>
+    </footer>
+
+</body>
+@yield('scripts')
+
+>>>>>>> bf6d92e332fb77e306e82c7861d9ce3a1427b48f
 </html>
