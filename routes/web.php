@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
@@ -33,3 +34,16 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ind
 //recuperation des etudiants
 
 Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+
+// creation de ma routes pour mes product(crud)
+// Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+// Route::get('/product/create',[ProductController::class, 'create'])->name('products.create');
+// Route::post('/product',[ProductController::class, 'store'])->name('products.store');
+// Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+// Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+// Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+// Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+// raccouci de mes 7 routes ( crud)
+
+Route::resource('/products',ProductController::class);
