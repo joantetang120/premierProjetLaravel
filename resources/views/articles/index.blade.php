@@ -55,6 +55,20 @@
                                     {{ $article->created_at->format('d/m/Y') }}
                                 </td>
 
+                                <td>
+                                    <div class="flex justify-between">
+                                        <a href="{{route('articles.edit', $article)}}" class="text-xs text-blue-400 underline">Edit</a>
+
+                                        <form action="{{route('articles.destroy', $article)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="px-5 py-2 bg-red-300 rounded-md">Supprimer</button>
+
+                                        </form>
+                                    </div>
+                                </td>
+
 
                             </tr>
                         @endforeach
