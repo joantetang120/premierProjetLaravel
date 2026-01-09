@@ -21,6 +21,24 @@ class ArticleController extends Controller
     }
 
 
+    public function store(Request $request){
+        $request->validate([
+            'titre' => 'required|min:5',
+            'contenu' => 'required|max:20',
+            'autheur' => 'required|max:10',
+        ]);
+
+        $article = new Article([
+           'titre' => $request['titre'],
+            'contenu' => $request['contenu'],
+            'autheur' => $request['autheur'],
+        ]);
+
+        $article->save();
+
+        return redirect()->route('articles.index');
+    }
+
 
 
 }

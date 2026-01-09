@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield(section: 'title', default: 'Mon site')</title>
+    <title>@yield(section: 'title', default: '')</title>
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -1513,13 +1513,16 @@
     @endif
 </head>
 
-<<<<<<< HEAD
+
 <body>
     <main>
-        @yield('content')
+        <h1>Mon site</h1>
+        @yield('body')
     </main>
+
+@yield('mes_scripts')
 </body>
 
+
 </html>
-=======
->>>>>>> bf6d92e332fb77e306e82c7861d9ce3a1427b48f
+

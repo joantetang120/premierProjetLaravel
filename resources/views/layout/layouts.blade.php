@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -24,7 +24,7 @@
             <li><a href="{{ route('articles.index') }}">Articles</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="{{ route('Produits.index') }}">Produits</a></li>
-=======
+
 @extends('layout.app')
 <!DOCTYPE html>
 <html lang="en">
@@ -113,13 +113,13 @@
             <li><a href="{{ route('articles.index') }}">Articles</a></li>
             <li><a href="{{ route('students.index') }}">students</a></li>
             <li><a href="../contact">Contact</a></li>
->>>>>>> bf6d92e332fb77e306e82c7861d9ce3a1427b48f
+
         </ul>
     </nav>
 
     <div class="container">
         <aside class="sidebar">
-<<<<<<< HEAD
+
             <h2>Menu</h2>
             <ul>
                 <li><a href="#">Lien 1</a></li>
@@ -132,8 +132,8 @@
         <strong>Succès !</strong> {{ session('success') }}
     </div>
 @endif
-            @yield('content') {{-- C'est ici que le contenu des autres pages s'injectera --}}
-=======
+           {{-- C'est ici que le contenu des autres pages s'injectera --}}
+
             <h2>Sidebar</h2>
             <ul>
                 <li><a href="">Link1</a></li>
@@ -149,23 +149,23 @@
             </section> --}}
 
             @yield('content')
->>>>>>> bf6d92e332fb77e306e82c7861d9ce3a1427b48f
+
         </main>
     </div>
 
     <footer>
-<<<<<<< HEAD
+
         <p>&copy; 2025 My website. Tous droits réservés.</p>
     </footer>
 
     @yield('scripts')
 </body>
-=======
+
         <p>&copy; 2025 My website. all rigth reserved.</p>
     </footer>
 
 </body>
-@yield('scripts')
 
->>>>>>> bf6d92e332fb77e306e82c7861d9ce3a1427b48f
+
+
 </html>
