@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,10 @@ Route::get('/students', [StudentController::class, 'index'])->name('students.ind
 // Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 // Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-// raccouci de mes 7 routes ( crud)
+// raccouci de mes 7 routes ( crud) pour product
 
 Route::resource('/products',ProductController::class);
+
+// raccouci de mes 7 routes ( crud) pour note
+
+Route::resource('/notes',NoteController::class);
