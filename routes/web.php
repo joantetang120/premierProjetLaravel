@@ -2,13 +2,25 @@
 
 use App\Http\Controllers\ArticleController;
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 
 
-Route::get('/', action: [SiteController::class, 'welcome']);
+Route::get('/', action: [AuthController::class, 'showLogin'])->name('showlogin');
+// AUTH FLOW
+// Login
+Route::get('/login', [AuthController::class, 'showLogin'])->name('showlogin');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+// Register
+Route::get('/register', [AuthController::class, 'showRegister'])->name('showregister');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+// DASHBOARD
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+
 
 
 
