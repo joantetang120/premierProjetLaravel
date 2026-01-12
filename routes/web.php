@@ -4,6 +4,8 @@ use App\Http\Controllers\ArticleController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
@@ -66,10 +68,23 @@ Route::get('/produits/creer', [ProduitController::class, 'create'])->name('produ
 // Enregistre le produit dans la base de données
 Route::post('/produits', [ProduitController::class, 'store'])->name('produits.store');
 
-// Mise à jour
-Route::get('/produits/{id}/modifier', [ProduitController::class, 'edit'])->name('produits.edit');
-Route::put('/produits/{id}', [ProduitController::class, 'update'])->name('produits.update');
+//recuperation des etudiants
 
-// Suppression
-Route::delete('/produits/{id}', [ProduitController::class, 'destroy'])->name('produits.destroy');
+Route::get('/students', [StudentController::class, 'index'])->name('students.index');
 
+// creation de ma routes pour mes product(crud)
+// Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+// Route::get('/product/create',[ProductController::class, 'create'])->name('products.create');
+// Route::post('/product',[ProductController::class, 'store'])->name('products.store');
+// Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+// Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+// Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+// Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+// raccouci de mes 7 routes ( crud) pour product
+
+Route::resource('/products',ProductController::class);
+
+// raccouci de mes 7 routes ( crud) pour note
+
+Route::resource('/notes',NoteController::class);
