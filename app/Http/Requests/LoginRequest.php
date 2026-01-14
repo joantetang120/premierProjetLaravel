@@ -11,7 +11,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => 'required|email',
+            'password' => 'required',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+          'email.required' => "L'addersse mail est obligatoire.",
+          'email.email' => "L'addersse mail n'est pas valide.",
+          'password.required' => "Le mot de passe est obligatoire.",
         ];
     }
 }

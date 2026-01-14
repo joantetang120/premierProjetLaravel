@@ -8,7 +8,15 @@
                 Formulaire de connexion
             </h1>
 
-            <form method="POST" class="space-y-5">
+            @error('password')
+            <span class="text-xs text-red-500 italic">{{ $message }}</span>
+            <br>
+            @enderror
+            @error('email')
+            <span class="text-xs text-red-500 ital  ic">{{ $message }}</span>
+            @enderror
+
+            <form action="{{route('login')}}" method="POST" class="space-y-5">
                 @csrf
 
                 <!-- Email -->
@@ -22,9 +30,7 @@
                         value="{{ old('email') }}"
                         class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     >
-                    @error('email')
-                    <span class="text-xs text-red-500 italic">{{ $message }}</span>
-                    @enderror
+
                 </div>
 
                 <!-- Password -->
@@ -37,9 +43,7 @@
                         name="password"
                         class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     >
-                    @error('password')
-                    <span class="text-xs text-red-500 italic">{{ $message }}</span>
-                    @enderror
+
                 </div>
 
                 <a href="{{route('showregister')}}"> Creer un compte</a>

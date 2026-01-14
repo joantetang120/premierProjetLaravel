@@ -19,6 +19,8 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 // Register
 Route::get('/register', [AuthController::class, 'showRegister'])->name('showregister');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
+// Logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // DASHBOARD
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
@@ -43,8 +45,12 @@ Route::fallback(function(){
 });
 
 // Routes pour les articles
-// 1. Recup des articles
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+
+Route::middleware('auth:client')->group(function(){
+    // 1. Recup des articles
+    Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+});
+
 // 2. Routes pour creer
 Route::get('/article_create', [ArticleController::class, 'create'])->name('articles.create');
 Route::post('/article_create', [ArticleController::class, 'store'])->name('articles.store');

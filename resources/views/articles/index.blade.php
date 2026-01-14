@@ -3,6 +3,12 @@
 @section('title', 'Liste des articles')
 
 @section('body')
+    <h1>Bienvenu {{auth()->user()->name}}</h1>
+    <h1>Email: {{auth()->user()->email}}</h1>
+    <form action="{{route('logout')}}" method="post">
+        @csrf
+        <button class="cursor-pointer hover:underline" type="submit">Deconnection</button>
+    </form>
     <div class="min-h-screen bg-gray-100 px-4 py-8">
         <div class="max-w-6xl mx-auto bg-white rounded-xl shadow-lg p-6">
 

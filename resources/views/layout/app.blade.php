@@ -1516,7 +1516,10 @@
 
 <body>
     <main>
-        <h1>Mon site</h1>
+        <div>
+            <h1>Mon site</h1>
+
+        </div>
         @yield('body')
     </main>
 
