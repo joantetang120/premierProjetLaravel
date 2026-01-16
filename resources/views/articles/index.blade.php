@@ -38,6 +38,8 @@
                             <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Contenu</th>
                             <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Auteur</th>
                             <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Date de création</th>
+                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Image</th>
+                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Cree par</th>
                             <th class="px-4 py-3 text-center text-sm font-semibold text-gray-700">Actions</th>
                         </tr>
                         </thead>
@@ -59,6 +61,14 @@
 
                                 <td class="px-4 py-3 text-gray-500">
                                     {{ $article->created_at->format('d/m/Y') }}
+                                </td>
+
+                                <td class="px-4 py-3 text-gray-500">
+                                    <img src="{{asset('storage/' . $article->image)}}" alt="{{$article->titre}}" width="200" height="150">
+                                </td>
+
+                                <td class="px-4 py-3 text-gray-700">
+                                  {{  $article->client ? $article->client->name : 'Anonyme' }}
                                 </td>
 
                                 <td>

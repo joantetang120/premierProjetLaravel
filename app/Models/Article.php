@@ -11,6 +11,11 @@ class Article extends Model
     use HasFactory;
 
     protected $fillable = [
-        'titre', 'contenu', 'autheur'
+        'titre', 'contenu', 'autheur','image', 'user_id'
     ];
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'user_id');
+    }
 }

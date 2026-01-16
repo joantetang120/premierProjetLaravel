@@ -25,6 +25,8 @@ class ArticleUpdateRequest extends FormRequest
             'titre' => 'required|',
             'contenu' => 'required|',
             'autheur' => 'nullable|',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
         ];
     }
 
@@ -36,6 +38,9 @@ class ArticleUpdateRequest extends FormRequest
             'contenu.required' => 'Le contenu est requis !',
             'autheur.required' => "L'auteur est requis !",
             'autheur.max' => 'L\'auteur doit avoir maximum 10 characters',
+            'image.image' => 'Le fichier n\'est pas une image !',
+            'image.mimes' => 'Le fichier n\'est pas du bon type !',
+            'image.max' => 'La taille maximale de l\'image doit etre de  2 mb !',
         ];
     }
 }

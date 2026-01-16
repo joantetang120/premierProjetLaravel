@@ -6,6 +6,7 @@ use App\Http\Requests\ArticleStoreRequest;
 use App\Http\Requests\ArticleUpdateRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -24,13 +25,24 @@ class ArticleController extends Controller
 
 
     public function store(ArticleStoreRequest  $request){
-        $request->validated();
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('photos_articles', 'public');
+            $data['image'] = $path;
+        }
+
+        $data['user_id'] = auth('client')->id();
+
 
         $article = new Article([
            'titre' => $request['titre'],
             'contenu' => $request['contenu'],
             'autheur' => $request['autheur'],
+            'image' => $data['image'] ?? null,
+            'user_id' => $data['user_id'] ?? null,
         ]);
+
 
         $article->save();
 
@@ -44,7 +56,16 @@ class ArticleController extends Controller
 
     public function update(ArticleUpdateRequest $request, Article $article)
     {
+
         $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            if ($article->image) {
+                Storage::disk('public')->delete($article->image);
+            }
+            $path = $request->file('image')->store('photos_articles', 'public');
+            $data['image'] = $path;
+        }
 
         $article->update($data);
 

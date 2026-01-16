@@ -8,7 +8,7 @@
                 Modifier l'article {{$article->titre}}
             </h1>
 
-            <form action="{{route('articles.update', $article)}}" method="POST" class="space-y-5">
+            <form action="{{route('articles.update', $article)}}" method="POST" class="space-y-5" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -58,6 +58,20 @@
 
                     >
                     @error('autheur')
+                    <p class="text-xs text-red-600">{{ $message  }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Ajouter une image:
+                    </label>
+                    <input
+                        type="file"
+                        name="image"
+                        class="w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition"
+                    >
+                    @error('image')
                     <p class="text-xs text-red-600">{{ $message  }}</p>
                     @enderror
                 </div>

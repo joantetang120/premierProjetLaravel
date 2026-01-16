@@ -10,7 +10,7 @@
                 Créer un nouvel article
             </h1>
 
-                <form action="{{route('articles.store')}}" method="post" class="space-y-5">
+                <form action="{{route('articles.store')}}" method="post" class="space-y-5" enctype="multipart/form-data">
                 @csrf
 
                 <div>
@@ -57,6 +57,20 @@
                     <p class="text-xs text-red-600">{{ $message  }}</p>
                     @enderror
                 </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            Ajouter une image:
+                        </label>
+                        <input
+                            type="file"
+                            name="image"
+                            class="w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition"
+                        >
+                        @error('image')
+                        <p class="text-xs text-red-600">{{ $message  }}</p>
+                        @enderror
+                    </div>
 
                 <button
                     type="submit"

@@ -25,6 +25,7 @@ class ArticleStoreRequest extends FormRequest
             'titre' => 'required|min:5',
             'contenu' => 'required|max:20',
             'autheur' => 'required|max:10',
+          'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 
@@ -36,7 +37,9 @@ class ArticleStoreRequest extends FormRequest
             'contenu.required' => 'Le contenu est requis !',
             'autheur.required' => "L'auteur est requis !",
             'autheur.max' => 'L\'auteur doit avoir maximum 10 characters',
-
+            'image.image' => 'Le fichier n\'est pas une image !',
+            'image.mimes' => 'Le fichier n\'est pas une image !',
+            'image.max' => 'La taille maximale de l\'image doit etre de  2 mb !',
         ];
     }
 }
