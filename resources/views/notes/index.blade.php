@@ -1,6 +1,12 @@
 @extends('layout.note')
 
 @section('content')
+<h1>Bienvenu {{auth()->user()->name}}</h1>
+    <h1>Email: {{auth()->user()->email}}</h1>
+    <form action="{{route('logout')}}" method="POST">
+        @csrf
+        <button class="cursor-pointer hover:underline" type="submit">Deconnection</button>
+    </form>
     <div class="card mt-5">
         <div class="card-header"><h4>Note List</h4></div>
         <div class="card-body">
@@ -19,6 +25,7 @@
                         <th width="50px">ID</th>
                         <th>Name</th>
                         <th>Detail</th>
+                        <th width="300px">Image</th>
                         <th width="300px">Action</th>
                     </tr>
                 </thead>
@@ -28,6 +35,9 @@
                         <td>{{ $note->id }}</td>
                         <td>{{ $note->name }}</td>
                         <td>{{ $note->detail }}</td>
+                        <td>
+                            <img src="{{ asset('storage/' . $note->image) }}"  width="200" height="150" class="rounded border shadow-sm">
+                        </td>
                         <td>
                             {{-- Formulaire de suppression unique pour chaque note --}}
                             <form action="{{ route('notes.destroy', $note) }}" method="POST" id="form-delete-{{ $note->id }}">

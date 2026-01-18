@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Http\Requests\StoreNoteRequest;
 use App\Http\Requests\UpdateNoteRequest;
+// use Illuminate\Container\Attributes\Storage;
+use Illuminate\Support\Facades\Storage ;
+
+use function Laravel\Prompts\note;
 
 class NoteController extends Controller
 {
@@ -33,7 +37,14 @@ class NoteController extends Controller
     public function store(StoreNoteRequest $request)
     {
         //
-        Note::create($request->validated());
+        // Note::create($request->validated());
+        $data=$request->validated();
+        if ($request->hasFile('image')) {
+            # code...
+            $path=$request->file('image')->store('photos_articles', 'public');
+            $data['image']=$path;
+        }
+        Note::create($data);
         return redirect()->route('notes.index')->with('success','la note a ete cree avec success');
     }
 
@@ -61,7 +72,18 @@ class NoteController extends Controller
     public function update(UpdateNoteRequest $request, Note $note)
     {
         //
-        $note->update($request->validated());
+        // $note->update($request->validated());
+        $data=$request->validated();
+        if ($request->hasFile('image')) {
+            # code...
+            if ($note->image) {
+                # code...
+                Storage::disk('public')->delete($note->image);
+            }
+            $path=$request->file('image')->store('photos_articles', 'public');
+            $data['image']=$path;
+        }
+        $note->update($data);
         return redirect()->route('notes.index')->with('success','la mise a jour a ete faite  avec success');
     }
 

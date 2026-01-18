@@ -9,6 +9,9 @@
                <div class="mt-4">
                 <p><strong>Name:</strong>{{ $note->name }}</p>
                 <p><strong>Detail:</strong>{{ $note->detail }}</p>
+                <p><strong>Detail:
+                    <img src="{{ asset('storage/' . $note->image) }}"  width="200" height="150" class="rounded border shadow-sm">
+                </p>
                </div>
 
             </div>

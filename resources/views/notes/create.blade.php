@@ -42,7 +42,7 @@
     <div class="card-body">
         <a href="{{ route('notes.index') }}" class="btn btn-info mb-3 btn-sm"><i class="fa fa-arrow-left"></i> Retour</a>
 
-        <form action="{{ route('notes.store') }}" method="POST">
+        <form action="{{ route('notes.store') }}" method="POST" enctype="multipart/form-data">
             @include('notes.fields')
         </form>
     </div>

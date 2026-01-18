@@ -44,7 +44,7 @@
     <div class="card-body">
         <a href="{{ route('notes.index') }}" class="btn btn-info mb-3 btn-sm"><i class="fa fa-arrow-left"></i> Retour</a>
 
-        <form action="{{ route('notes.update', $note) }}" method="POST">
+        <form action="{{ route('notes.update', $note) }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @include('notes.fields')
         </form>

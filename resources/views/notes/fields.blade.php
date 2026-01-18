@@ -17,6 +17,15 @@
 </div>
 
 <div class="mt-2">
+    <label for="image">Entrez une image</label>
+    <input type="file" name="image"  class="form-control"
+           value="{{ old('image', $note->image ?? '') }}">
+    @error("image")
+        <span class="text-danger">{{ $message }}</span>
+    @enderror
+</div>
+
+<div class="mt-2">
     <button class="btn btn-success btn-sm" type="submit">
         <i class="fa fa-save"></i> Submit
     </button>

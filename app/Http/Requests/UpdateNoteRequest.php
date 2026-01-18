@@ -25,6 +25,8 @@ class UpdateNoteRequest extends FormRequest
             //
             'name'=>'required|string|min:3',
             'detail'=>'required|string|min:5',
+            'image'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ];
     }
 
@@ -35,6 +37,9 @@ class UpdateNoteRequest extends FormRequest
             'name.min'        => 'Tu dois avoir un nom supérieur à 3 caractères.',
             'detail.required' => 'Le détail est obligatoire.',
             'detail.min'      => 'Le contenu du champ détail doit avoir au moins 5 caractères.',
+            'image.image'=>'ce fichier n\'est pas une image',
+            'image.mimes'=>'mauvais format d\'image',
+            'image.max'=>'image trop lourde',
         ];
     }
 }

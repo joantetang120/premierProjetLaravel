@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -8,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StudentController;
 
-Route::get('/', action: [SiteController::class, 'welcome']);
+// Route::get('/', action: [SiteController::class, 'welcome']);
 
 
 
@@ -52,3 +53,17 @@ Route::resource('/products',ProductController::class);
 // raccouci de mes 7 routes ( crud) pour note
 
 Route::resource('/notes',NoteController::class);
+
+//route pour mon authentification(login)
+Route::get('/', action: [AuthController::class, 'showLogin'])->name('showlogin');
+Route::get('/login',[AuthController::class, 'showLogin'])->name('showlogin');
+Route::post('/login',[AuthController::class, 'login'])->name('login');
+
+//route pour mon authentification(register)
+Route::get('/register',[AuthController::class, 'showRegister'])->name('showregister');
+Route::post('/register',[AuthController::class, 'register'])->name('register');
+
+//logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// route de l'authentification qui mene au dashboard si tout est bon
+Route::get('/dashboard',[AuthController::class, 'dashboard'])->name('dashboard');
