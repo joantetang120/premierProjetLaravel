@@ -91,6 +91,12 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div>
+                    {{$articles->links('partials.pagination')}}
+
+{{--                    @include('partials.pagination', ['paginator' => $articles])--}}
+                </div>
             @endif
 
         </div>

@@ -13,7 +13,8 @@ class ArticleController extends Controller
     public function index()
     {
         // $articles = Article::get();
-        $articles = Article::latest()->get();
+//        $articles = Article::latest()->get();
+        $articles = Article::paginate(2);
         return view('articles.index', compact('articles'));
 
     }
