@@ -26,6 +26,7 @@
                         <th>Name</th>
                         <th>Detail</th>
                         <th width="300px">Image</th>
+                        <th width="10px">Creer par</th>
                         <th width="300px">Action</th>
                     </tr>
                 </thead>
@@ -37,6 +38,9 @@
                         <td>{{ $note->detail }}</td>
                         <td>
                             <img src="{{ asset('storage/' . $note->image) }}"  width="200" height="150" class="rounded border shadow-sm">
+                        </td>
+                        <td>
+                            {{  $note->client ? $note->client->name : 'Anonyme' }}
                         </td>
                         <td>
                             {{-- Formulaire de suppression unique pour chaque note --}}

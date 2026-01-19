@@ -44,6 +44,7 @@ class NoteController extends Controller
             $path=$request->file('image')->store('photos_articles', 'public');
             $data['image']=$path;
         }
+        $data['client_id']=auth('client')->id();
         Note::create($data);
         return redirect()->route('notes.index')->with('success','la note a ete cree avec success');
     }
