@@ -68,6 +68,10 @@
         </div>
     </div>
 
+    <div>
+        {{ $notes->links('partials.pagination') }}
+
+    </div>
     {{-- STRUCTURE DU MODAL (BACKDROP) --}}
     <div id="backdrop" class="modal-custom">
         <div role="alertdialog" aria-modal="true" aria-labelledby="dialog_label" aria-describedby="dialog_desc" class="modal-content-custom">

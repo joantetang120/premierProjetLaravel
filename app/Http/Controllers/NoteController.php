@@ -18,7 +18,8 @@ class NoteController extends Controller
     public function index()
     {
         //
-        $notes=Note::get();
+        // $notes=Note::get();
+        $notes=Note::paginate(2);
          return view('notes.index', compact('notes'));
     }
 
