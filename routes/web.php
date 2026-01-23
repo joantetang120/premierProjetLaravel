@@ -55,9 +55,9 @@ Route::middleware('auth:client')->group(function(){
 Route::get('/article_create', [ArticleController::class, 'create'])->name('articles.create');
 Route::post('/article_create', [ArticleController::class, 'store'])->name('articles.store');
 // 3. Routes pour editer
-Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-Route::put('/article/{article}/edit', [ArticleController::class, 'update'])->name('articles.update');
-Route::delete('/article/{article}/delete', [ArticleController::class, 'destroy'])->name('articles.destroy');
+Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->middleware('article.can:edit')->name('articles.edit');
+Route::put('/article/{article}/edit', [ArticleController::class, 'update'])->middleware('article.can:edit')->name('articles.update');
+Route::delete('/article/{article}/delete', [ArticleController::class, 'destroy'])->middleware('article.can:delete')->name('articles.destroy');
 
 
 Route::get('/students', [\App\Http\Controllers\StudentController::class, 'index'])->name('students.index');
