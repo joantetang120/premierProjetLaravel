@@ -9,6 +9,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\Admin\DashboardController;
+
+
 
 
 Route::get('/', action: [AuthController::class, 'showLogin'])->name('showlogin');
@@ -94,3 +97,25 @@ Route::resource('/products',ProductController::class);
 // raccouci de mes 7 routes ( crud) pour note
 
 Route::resource('/notes',NoteController::class);
+
+
+
+// Routes publiques
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Routes admin avec middleware
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // Gestion des utilisateurs
+    Route::resource('users', UserController::class);
+    
+    // Autres routes admin
+    Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+    Route::put('/settings', [DashboardController::class, 'updateSettings'])->name('settings.update');
+    
+    // Statistiques
+    Route::get('/stats', [DashboardController::class, 'stats'])->name('stats');
+});

@@ -53,3 +53,24 @@ class AuthController extends Controller
         return redirect()->route('showlogin');
     }
 }
+
+namespace Database\Seeders;
+
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class AdminUserSeeder extends Seeder
+{
+    public function run()
+    {
+        User::create([
+            'name' => 'Admin Client',
+            'email' => 'admin@client.com',
+            'password' => Hash::make('password123'),
+            'role' => 'admin', // Si vous avez un champ role
+            'is_admin' => true, // Ou un champ booléen
+            'email_verified_at' => now(),
+        ]);
+    }
+}
