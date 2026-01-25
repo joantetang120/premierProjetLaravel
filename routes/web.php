@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ArticleController;
 
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\CheckAdmin;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\NoteController;
@@ -106,16 +108,23 @@ Route::get('/', function () {
 });
 
 // Routes admin avec middleware
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
-    // Gestion des utilisateurs
-    Route::resource('users', UserController::class);
-    
-    // Autres routes admin
-    Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
-    Route::put('/settings', [DashboardController::class, 'updateSettings'])->name('settings.update');
-    
-    // Statistiques
-    Route::get('/stats', [DashboardController::class, 'stats'])->name('stats');
+// Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
+//     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+//     // Gestion des utilisateurs
+//     Route::resource('users', UserController::class);
+
+//     // Autres routes admin
+//     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+//     Route::put('/settings', [DashboardController::class, 'updateSettings'])->name('settings.update');
+
+//     // Statistiques
+//     Route::get('/stats', [DashboardController::class, 'stats'])->name('stats');
+// });
+
+Route::middleware(['auth:client',CheckAdmin::class])->group(function(){
+    Route::get('/admin',[AdminController::class,'index'])->name('admin.dashboard');
+
+    Route::get('/admin/clients/create', [AdminController::class, 'create'])->name('admin.clients.create');
+    Route::post('/admin/clients', [AdminController::class, 'store'])->name('admin.clients.store');
 });
