@@ -14,6 +14,13 @@ class Client extends Authenticatable
     // use HasFactory;
     use HasFactory, Notifiable;
 
-    protected $fillable = ['name','password','email'];
+    protected $fillable = ['name','password','email','role'];
     protected $hidden = ['password','remember_token'];
+
+    public function isAdmin(){
+        return $this->role ==='admin';
+    }
+     public function isClient(){
+        return $this->role ==='client';
+    }
 }

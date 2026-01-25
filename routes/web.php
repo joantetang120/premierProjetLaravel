@@ -52,7 +52,18 @@ Route::resource('/products',ProductController::class);
 
 // raccouci de mes 7 routes ( crud) pour note
 
-Route::resource('/notes',NoteController::class);
+// Route::resource('/notes',NoteController::class);
+
+Route::middleware('auth:client')->group(function(){
+    Route::resource('/notes',NoteController::class)->except(['edit','put','destroy']);
+
+    // ajout des protections specifique aux route
+    Route::get('/notes/{note}/edit', [NoteController::class, 'edit'])->middleware('note.can:edit')->name('notes.edit');
+    Route::put('/notes/{note}/edit', [NoteController::class, 'update'])->middleware('note.can:edit')->name('notes.update');
+    Route::delete('/notes/{note}/delete',[NoteController::class, 'destroy'])->middleware('note.can:delete')->name('notes.destroy');
+
+});
+
 
 //route pour mon authentification(login)
 Route::get('/', action: [AuthController::class, 'showLogin'])->name('showlogin');
