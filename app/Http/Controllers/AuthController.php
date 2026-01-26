@@ -40,6 +40,12 @@ class AuthController extends Controller
 
         if (Auth::guard('client')->attempt($credentials)) {
             $request->session()->regenerate();
+            $user = Auth::guard('client')->user();
+
+        // Utilisation de ta méthode isAdmin()
+        if ($user->isAdmin()) {
+            return redirect()->route('admin.dashboard');
+        }
             return redirect()->route('articles.index');
         }
 
