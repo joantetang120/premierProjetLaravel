@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Mail\MailDeBienvenue;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -29,6 +31,10 @@ class AuthController extends Controller
            "email" => $data['email'],
            "password" => Hash::make($data['password']),
         ]);
+
+       Mail::to($client->email)->send(new MailDeBienvenue($client));
+//        Mail::to($client->email)->queue(new MailDeBienvenue($client));
+
 
        Auth::guard('client')->login($client);
 
