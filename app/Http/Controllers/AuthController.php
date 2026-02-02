@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailDeBienvenue;
+
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -29,6 +32,7 @@ class AuthController extends Controller
            "password" => Hash::make($data['password']),
         ]);
 
+        Mail::to($client->email)->send(new MailDeBienvenue($client));
        Auth::guard('client')->login($client);
 
        return redirect()->route('notes.index');
